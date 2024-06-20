@@ -1,6 +1,14 @@
-import { login, signup } from './actions'
+import { createClient } from "@/utils/supabase/server";
+import { login, signup } from "./actions";
+import { redirect } from "next/navigation";
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const supabase = createClient();
+
+  const { data } = await supabase.auth.getUser();
+  if (data?.user) {
+    redirect("/private");
+  }
   return (
     <form>
       <label htmlFor="email">Email:</label>
@@ -10,5 +18,5 @@ export default function LoginPage() {
       <button formAction={login}>Log in</button>
       <button formAction={signup}>Sign up</button>
     </form>
-  )
+  );
 }

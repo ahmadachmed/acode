@@ -1,8 +1,7 @@
-import { Inter } from "next/font/google";
 import { redirect } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
-
-const inter = Inter({ subsets: ["latin"] });
+import Navbar from '@/components/Navbar';
+import Header from './Header';
 
 export const metadata = {
   title: "Dashboard - ACODE",
@@ -18,8 +17,14 @@ export default async function DashboardLayout({ children }) {
   }
 
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+        <div className='flex items-start justify-start'>
+          <Navbar username={data.user.email} email={data.user.email} />
+          <div className='w-full h-full pl-[300px]'>
+            <Header/>
+            <div className='p-6'>
+              {children}
+            </div>
+          </div>
+        </div>
   );
 }

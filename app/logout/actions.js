@@ -10,6 +10,6 @@ export async function logout() {
     if (error) {
         redirect('/error')
     }
-    revalidatePath('/private', 'layout')
-    redirect('/private')
+    revalidatePath('/login', 'layout')
+    redirect('/login')
 }

@@ -1,4 +1,4 @@
-import TableList from "@/components/TableList";
+import { DataTableDemo } from "./dataTable";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Work() {
@@ -9,7 +9,7 @@ export default function Work() {
                 <CardDescription>There is the work that fetch in Home</CardDescription>
             </CardHeader>
             <CardContent>
-                <TableList/>
+                <DataTableDemo/>
             </CardContent>
             <CardFooter>
                 test

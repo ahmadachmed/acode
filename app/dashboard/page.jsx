@@ -1,19 +1,25 @@
 import { createClient } from '@/utils/supabase/server'
-import { logout } from '../logout/actions'
-import Link from 'next/link'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 
 export default async function DashboardPage() {
   const supabase = createClient()
 
   const { data } = await supabase.auth.getUser()
-  
-  return <>
-    <p>Hello {data.user.email}</p>
-    <form action={logout}>
-      <button type='submit'>
-        SignOut
-      </button>
-    </form>
-    <Link href={'/dashboard/work'}>Work</Link>
-  </>
+
+  return (
+      <Card>
+        <CardHeader>
+          <CardTitle>Hello {data.user.email}</CardTitle>
+          <CardDescription>Hopefully you have a great day!</CardDescription>
+        </CardHeader>
+      </Card>
+
+  )
 }

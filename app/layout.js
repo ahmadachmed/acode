@@ -1,6 +1,8 @@
 import { Inter as FontSans } from "next/font/google"
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -21,6 +23,8 @@ export default function RootLayout({ children }) {
         fontSans.variable
       )}>
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
